@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <title>Hello World - 3D</title>
+  <link rel='stylesheet' href='https://js.arcgis.com/4.9/esri/css/main.css'>
+  <style>
+    html,
+    body,
+    #view {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+  </style>
+  <script src='https://js.arcgis.com/4.9/'></script>
+  <script>
+    var map, view;
+    require([
+      'esri/Map',
+      'esri/views/SceneView',
+      'dojo/domReady!'
+    ], function(Map, SceneView) {
+
+      map = new Map({
+        basemap: 'streets'
+      });
+
+      view = new SceneView({
+        center: [0, 0],
+        container: 'view',
+        map: map,
+        zoom: 3
+      });
+
+      view.watch('ready', (response) => {
+        if (response === true) {
+          console.log('map is ready!');
+        }
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id='view' style='height:100%;'></div>
+</body>
+
+</html>
